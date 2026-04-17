@@ -3,12 +3,7 @@ import { Badge } from "@/components/ui/badge"
 export const sections = [
   {
     id: 'hero',
-    subtitle: (
-      <div className="flex flex-col gap-3">
-        <Badge variant="outline" className="text-[#1A6FA8] border-[#1A6FA8] w-fit">Гражданский и арбитражный процесс</Badge>
-        <p className="text-[#3A7FA8] text-lg font-medium">Брагина Анна · ИЮ402Б · 2026</p>
-      </div>
-    ),
+    subtitle: <p className="text-[#3A7FA8] text-lg font-medium">Брагина Анна · ИЮ402Б · 2026</p>,
     title: "Роль нотариуса в обеспечении доказательств.",
     image: 'https://cdn.poehali.dev/projects/127a9436-0a22-43b5-82b6-1a1d3f9c3bf1/files/5013f1dd-456e-4a11-ac54-c92b7f2eba7b.jpg',
   },
