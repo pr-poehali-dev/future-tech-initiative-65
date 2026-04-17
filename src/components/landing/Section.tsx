@@ -18,7 +18,7 @@ export default function Section({ id, title, subtitle, content, items, isActive,
             </motion.div>
           )}
           <motion.h2
-            className="text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] font-bold leading-[1.1] tracking-tight text-[#0D3A5C]"
+            className="text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] font-bold leading-[1.1] tracking-tight text-white"
             initial={{ opacity: 0, y: 50 }}
             animate={isActive ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
@@ -27,7 +27,7 @@ export default function Section({ id, title, subtitle, content, items, isActive,
           </motion.h2>
           {content && (
             <motion.p
-              className="text-base md:text-lg mt-4 text-[#3A7FA8]"
+              className="text-base md:text-lg mt-4 text-white/80"
               initial={{ opacity: 0, y: 50 }}
               animate={isActive ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -48,15 +48,15 @@ export default function Section({ id, title, subtitle, content, items, isActive,
                     {i + 1}
                   </span>
                   <div className="flex flex-col gap-1.5">
-                    <p className="text-sm md:text-base text-[#3A7FA8]">
-                      <span className="font-semibold text-[#0D3A5C]">{item.label}. </span>
+                    <p className="text-sm md:text-base text-white/80">
+                      <span className="font-semibold text-white">{item.label}. </span>
                       {item.text}
                     </p>
                     {item.subitems && (
                       <ul className="flex flex-col gap-1 ml-1">
                         {item.subitems.map((sub, j) => (
-                          <li key={j} className="flex gap-2 text-sm text-[#3A7FA8]">
-                            <span className="flex-shrink-0 text-[#1A6FA8] font-bold">·</span>
+                          <li key={j} className="flex gap-2 text-sm text-white/60">
+                            <span className="flex-shrink-0 text-white/60 font-bold">·</span>
                             <span>{sub}</span>
                           </li>
                         ))}

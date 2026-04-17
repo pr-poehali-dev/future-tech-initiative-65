@@ -7,14 +7,14 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="h-screen overflow-hidden bg-[#EAF4FB] relative">
+    <div className="h-screen overflow-hidden bg-[#071E38] relative">
       <div className="absolute inset-0 z-10">
         <Squares
           direction="diagonal"
           speed={0.5}
           squareSize={40}
-          borderColor="#B8D9EF"
-          hoverFillColor="#D0EAF8"
+          borderColor="#0E3460"
+          hoverFillColor="#112d54"
         />
       </div>
       <div className="relative z-20 h-full">
