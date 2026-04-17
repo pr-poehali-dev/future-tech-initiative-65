@@ -1,10 +1,16 @@
 import type { ReactNode } from "react"
 
+export interface SectionItem {
+  label: string
+  text: string
+}
+
 export interface Section {
   id: string
   title: string
   subtitle?: ReactNode
   content?: string
+  items?: SectionItem[]
   showButton?: boolean
   buttonText?: string
   image?: string

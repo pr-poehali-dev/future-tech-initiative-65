@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import type { SectionProps } from "@/types"
 
-export default function Section({ id, title, subtitle, content, isActive, showButton, buttonText, image }: SectionProps) {
+export default function Section({ id, title, subtitle, content, items, isActive, showButton, buttonText, image }: SectionProps) {
   return (
     <section id={id} className="relative h-screen w-full snap-start flex items-center p-8 md:p-16 lg:p-24">
       <div className={`flex w-full h-full items-center gap-12 ${image ? 'flex-row' : 'flex-col justify-center'}`}>
@@ -34,6 +34,26 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
             >
               {content}
             </motion.p>
+          )}
+          {items && (
+            <motion.ol
+              className="mt-6 flex flex-col gap-4"
+              initial={{ opacity: 0, y: 50 }}
+              animate={isActive ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              {items.map((item, i) => (
+                <li key={i} className="flex gap-3">
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#1A6FA8] text-white text-sm font-bold flex items-center justify-center mt-0.5">
+                    {i + 1}
+                  </span>
+                  <p className="text-base md:text-lg text-[#3A7FA8]">
+                    <span className="font-semibold text-[#0D3A5C]">{item.label}. </span>
+                    {item.text}
+                  </p>
+                </li>
+              ))}
+            </motion.ol>
           )}
           {showButton && (
             <motion.div
