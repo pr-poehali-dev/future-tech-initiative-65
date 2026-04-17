@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge"
 export const sections = [
   {
     id: 'hero',
-    subtitle: <Badge variant="outline" className="text-white border-white">Гражданский и арбитражный процесс</Badge>,
+    subtitle: <Badge variant="outline" className="text-[#1A6FA8] border-[#1A6FA8]">Гражданский и арбитражный процесс</Badge>,
     title: "Роль нотариуса в обеспечении доказательств.",
   },
   {
