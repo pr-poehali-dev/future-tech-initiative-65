@@ -3,6 +3,7 @@ import type { ReactNode } from "react"
 export interface SectionItem {
   label: string
   text: string
+  subitems?: string[]
 }
 
 export interface Section {

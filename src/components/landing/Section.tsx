@@ -4,9 +4,9 @@ import type { SectionProps } from "@/types"
 
 export default function Section({ id, title, subtitle, content, items, isActive, showButton, buttonText, image }: SectionProps) {
   return (
-    <section id={id} className="relative h-screen w-full snap-start flex items-center p-8 md:p-16 lg:p-24">
+    <section id={id} className="relative h-screen w-full snap-start flex items-center p-8 md:p-16 lg:p-24 overflow-hidden">
       <div className={`flex w-full h-full items-center gap-12 ${image ? 'flex-row' : 'flex-col justify-center'}`}>
-        <div className={`flex flex-col justify-center ${image ? 'flex-1' : 'max-w-4xl'}`}>
+        <div className={`flex flex-col justify-center overflow-y-auto max-h-full py-8 ${image ? 'flex-1' : 'max-w-4xl'}`}>
           {subtitle && (
             <motion.div
               className="mb-8"
@@ -18,7 +18,7 @@ export default function Section({ id, title, subtitle, content, items, isActive,
             </motion.div>
           )}
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-[4rem] xl:text-[5rem] font-bold leading-[1.1] tracking-tight text-[#0D3A5C]"
+            className="text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.5rem] font-bold leading-[1.1] tracking-tight text-[#0D3A5C]"
             initial={{ opacity: 0, y: 50 }}
             animate={isActive ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
@@ -27,7 +27,7 @@ export default function Section({ id, title, subtitle, content, items, isActive,
           </motion.h2>
           {content && (
             <motion.p
-              className="text-lg md:text-xl lg:text-2xl mt-6 text-[#3A7FA8]"
+              className="text-base md:text-lg mt-4 text-[#3A7FA8]"
               initial={{ opacity: 0, y: 50 }}
               animate={isActive ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -37,20 +37,32 @@ export default function Section({ id, title, subtitle, content, items, isActive,
           )}
           {items && (
             <motion.ol
-              className="mt-6 flex flex-col gap-4"
+              className="mt-5 flex flex-col gap-4"
               initial={{ opacity: 0, y: 50 }}
               animate={isActive ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               {items.map((item, i) => (
                 <li key={i} className="flex gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#1A6FA8] text-white text-sm font-bold flex items-center justify-center mt-0.5">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#1A6FA8] text-white text-xs font-bold flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
-                  <p className="text-base md:text-lg text-[#3A7FA8]">
-                    <span className="font-semibold text-[#0D3A5C]">{item.label}. </span>
-                    {item.text}
-                  </p>
+                  <div className="flex flex-col gap-1.5">
+                    <p className="text-sm md:text-base text-[#3A7FA8]">
+                      <span className="font-semibold text-[#0D3A5C]">{item.label}. </span>
+                      {item.text}
+                    </p>
+                    {item.subitems && (
+                      <ul className="flex flex-col gap-1 ml-1">
+                        {item.subitems.map((sub, j) => (
+                          <li key={j} className="flex gap-2 text-sm text-[#3A7FA8]">
+                            <span className="flex-shrink-0 text-[#1A6FA8] font-bold">·</span>
+                            <span>{sub}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 </li>
               ))}
             </motion.ol>
@@ -60,7 +72,7 @@ export default function Section({ id, title, subtitle, content, items, isActive,
               initial={{ opacity: 0, y: 20 }}
               animate={isActive ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="mt-12"
+              className="mt-8"
             >
               <Button
                 variant="outline"
